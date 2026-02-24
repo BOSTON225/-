@@ -1,2 +1,41 @@
-# Google App Engine generated folder
-appengine-generated/
+import random
+
+choices = ["حجر", "ورقة", "مقص"]
+
+player_score = 0
+computer_score = 0
+
+while True:
+    print("\n1- حجر")
+    print("2- ورقة")
+    print("3- مقص")
+    print("4- خروج")
+
+    choice = input("اختار رقم: ")
+
+    if choice == "4":
+        break
+
+    if choice not in ["1", "2", "3"]:
+        print("اختيار غلط!")
+        continue
+
+    player = choices[int(choice)-1]
+    computer = random.choice(choices)
+
+    print("الكمبيوتر اختار:", computer)
+
+    if player == computer:
+        print("تعادل 🤝")
+    elif (player == "حجر" and computer == "مقص") or \
+         (player == "ورقة" and computer == "حجر") or \
+         (player == "مقص" and computer == "ورقة"):
+        print("كسبت 🎉")
+        player_score += 1
+    else:
+        print("الكمبيوتر كسب 🤖")
+        computer_score += 1
+
+    print("المجموع الحالي → أنت:", player_score, "| الكمبيوتر:", computer_score)
+
+print("انتهت اللعبة 👋")
